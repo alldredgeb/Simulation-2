@@ -1,0 +1,2 @@
+insert into user_property_info (user_id, p_name, p_description, p_address, p_city, p_state, p_zip, p_url, p_loan_amount, p_mo_mortgage, p_reco_rent, p_des_rent) 
+values ( $1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12);
