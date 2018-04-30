@@ -106,7 +106,7 @@ class Wizard_5 extends Component {
 
           <div className="recommended_rent">
             {this.state.p_recommended_rent > 0 ?
-            <p>Recommended Rent: {p_recommended_rent}</p> :
+            <p>Recommended Rent: $ {p_recommended_rent}</p> :
             <p>Recommended Rent: 0</p>
             }
           </div>

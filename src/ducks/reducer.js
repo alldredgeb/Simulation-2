@@ -85,7 +85,16 @@ export default function reducer(state = initialState, action) {
     case CANCEL_WIZARD:
     return Object.assign({}, state, {
       p_name: action.payload.p_name,
-      p_description: action.payload.p_description
+      p_description: action.payload.p_description,
+      p_address: action.payload.p_address,
+      p_city: action.payload.p_city,
+      p_state: action.payload.p_state,
+      p_zip: action.payload.p_zip,
+      p_img_url: action.payload.p_img_url,
+      p_loan_amount: action.payload.p_loan_amount,
+      p_monthly_mortgage: action.payload.p_monthly_mortgage,
+      p_recommended_rent: action.payload.p_recommended_rent,
+      p_desired_rent: action.payload.p_desired_rent
     });
 
     case ADD_WIZARD_ONE_INFO:

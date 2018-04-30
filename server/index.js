@@ -100,16 +100,12 @@ app.post('/api/wizard/5', (req,res) => {
 });
 
 
-
-/*
-
-app.delete('/api/dashboard', (req,res) => {
-  app.get('db').deletePropertyInfo(name.of.parameter).then( () => {
+app.delete('/api/dashboard/:id', (req,res) => {
+  app.get('db').deletePropertyInfo(req.params.id).then( () => {
     res.status(200).send("property item deleted!");
   });
 });
 
-*/
 
 //LISTEN
 app.listen(port, () => console.log(`listening on port ${port}!`));

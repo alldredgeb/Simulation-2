@@ -13,6 +13,7 @@ class Dashboard extends Component {
     }
     this.handleFilterNumbersOnChange = this.handleFilterNumbersOnChange.bind(this);
     this.handleLogoutOnClick = this.handleLogoutOnClick.bind(this);
+    this.handleDeleteOnClick = this.handleDeleteOnClick.bind(this);
   }
 
   componentDidMount() {
@@ -38,19 +39,14 @@ class Dashboard extends Component {
     })
   }
 
-  ////////show properties by price filtered for
-
-
-  //////delete list item onClick
-  /*
-  handleDeleteOnClick(event) {
-    axios.delete('/api/dashboard')
+  handleDeleteOnClick(id) {
+    axios.delete(`/api/dashboard/${id}`)
     .then( response => {
       console.log(response);
     })
   }
-  */
 
+  
   render() {
     return (
       <div className="dashboard_overall">
@@ -88,6 +84,39 @@ class Dashboard extends Component {
             <div className="home_listings_title">
               <p>Home Listings</p>
             </div>
+            <ul>
+
+              {this.state.user_properties.map((obj) => {
+                return (
+                  <div key={obj.id} className="individual_property_details_container">
+                  <div className="p_image_name_description">
+                    <img className="p_detail_image" src={obj.p_url} alt="home"/>
+                    <div className="p_name_and_description">
+                      <p>{obj.p_name}</p>
+                      <p>{obj.p_description}</p>
+                    </div>
+                  </div>
+
+                  <div className="vertical_dividing_line">
+                  </div>
+
+                  <div className="p_rest_of_details">
+                    <p>Loan: ${obj.p_loan_amount}</p>
+                    <p>Monthly Mortgage: ${obj.p_mo_mortgage}</p>
+                    <p>Recommended Rent: ${obj.p_reco_rent}</p>
+                    <p>Desired Rent: ${obj.p_des_rent}</p>
+                    <p>Address: {obj.p_address}</p>
+                    <p>City: {obj.p_city}</p>
+                    <p>State: {obj.p_state}</p>
+                    <p>Zip: {obj.p_zip}</p>
+                  </div>
+
+                  <img className="delete_icon" onClick={() => {this.handleDeleteOnClick(obj.id)}} alt="delete icon"/>
+                  </div>
+                )
+              })}
+
+            </ul>
           </div>
         </section>
 
@@ -98,30 +127,5 @@ class Dashboard extends Component {
 
 export default Dashboard;
 
-/*
-<div className="individual_property_details_container">
-<div className="p_image_name_description">
-  <img className="p_detail_image"/>
-  <div className="p_name_and_description">
-    <p>Insert Name Here</p>
-    <p>Insert Description Here</p>
-  </div>
-</div>
 
-<div className="vertical_dividing_line">
-</div>
 
-<div className="p_rest_of_details">
-  <p>Loan:{}</p>
-  <p>Monthly Mortgage: {}</p>
-  <p>Recommended Rent: {}</p>
-  <p>Desired Rent: {}</p>
-  <p>Address: {}</p>
-  <p>City: {}</p>
-  <p>State: {}</p>
-  <p>Zip: {}</p>
-</div>
-
-<img className="delete_icon" onClick={this.handleDeleteOnClick} />
-</div>
-*/
