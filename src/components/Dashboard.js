@@ -42,8 +42,13 @@ class Dashboard extends Component {
   handleDeleteOnClick(id) {
     axios.delete(`/api/dashboard/${id}`)
     .then( response => {
-      console.log(response);
-    })
+      axios.get('/api/dashboard').then( response => {
+        console.log(response.data)
+          this.setState({
+            user_properties: response.data
+          })
+        })
+      })
   }
 
   
